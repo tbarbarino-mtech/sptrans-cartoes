@@ -1,0 +1,22 @@
+# Web & API (FastAPI)
+fastapi==0.116.1
+uvicorn==0.35.0
+pydantic==2.5.3
+pydantic-settings==2.1.0
+starlette==0.47.3
+
+# Banco de Dados (MongoDB)
+pymongo==4.6.1
+dnspython==2.8.0
+python-dotenv==1.0.0
+
+# Testes e Mocking
+pytest==9.0.2
+mongomock==4.1.2
+pytest-asyncio==1.2.0
+pytest-cov==4.1.0
+coverage==7.13.1
+
+# Utilitários
+typing-extensions==4.15.0
+anyio==4.10.0
