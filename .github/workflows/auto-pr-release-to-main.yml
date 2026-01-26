@@ -30,4 +30,4 @@ jobs:
             Automatic PR created from `release` into `main`.
             Review and merge when ready.
           labels: automated, sync
-          delete-branch: false
+          delete-branch: true
