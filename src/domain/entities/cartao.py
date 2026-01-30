@@ -1,24 +1,27 @@
 from dataclasses import dataclass
+from typing import Dict, Optional
 from datetime import datetime
-from typing import Dict, Any, Optional
+from src.domain.enums.cartao_enums import TipoCartao, SubtipoCartao
 
 @dataclass
 class Cartao:
-    usuario_id: str              #  usuario_id VARCHAR(50)
-    cartao_numero: str           #  cartao_numero VARCHAR(20)
-    dados_completos: Dict[str, Any] #  dados_completos JSONB (O JSON "raw" da SPTrans)
-    data_consulta: datetime      #  data_consulta TIMESTAMP
-    data_validade_cache: datetime #  data_validade TIMESTAMP (expiração do cache)
-    status: str                  #  status VARCHAR(20)
-    metadados: Optional[Dict] = None #  metadados JSONB
+    usuario_id: str
+    cartao_numero: str
+    dados_completos: Dict
+    tipo_cartao: Optional[TipoCartao] = None
+    subtipo: Optional[SubtipoCartao] = None
+    data_consulta: Optional[datetime] = None
+    data_validade_cache: Optional[datetime] = None
+    status: Optional[str] = None
 
-    def to_dict(self):
+    def to_dict(self) -> Dict:
         return {
             "usuario_id": self.usuario_id,
             "cartao_numero": self.cartao_numero,
             "dados_completos": self.dados_completos,
+            "tipo_cartao": self.tipo_cartao.value if self.tipo_cartao else None,
+            "subtipo": self.subtipo.value if self.subtipo else None,
             "data_consulta": self.data_consulta,
             "data_validade_cache": self.data_validade_cache,
-            "status": self.status,
-            "metadados": self.metadados
+            "status": self.status
         }
